@@ -1,5 +1,5 @@
 # Sugar 7.8 Dockerized
-This repository will help you deploy a Docker based development full stack for Sugar 7.8 meeting all the platform requirements.
+This repository will help you deploy a Docker based development full stack for Sugar 7.8 meeting all the platform requirements listed here: http://support.sugarcrm.com/Resources/Supported_Platforms/Sugar_7.8.x_Supported_Platforms/
 
 ## Running the stack
 * Run the stack with `docker-compose up -d`
@@ -17,7 +17,7 @@ This repository will help you deploy a Docker based development full stack for S
 ## Core stack components
 * Linux
 * Apache
-* Mysql
+* MySQL
 * PHP
 * Redis
 * Elasticsearch
