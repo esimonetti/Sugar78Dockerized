@@ -46,9 +46,9 @@ This repository will help you deploy a Docker based development full stack for S
 * Network "weirdness" as documented on https://docs.docker.com/docker-for-mac/networking/#known-limitations-use-cases-and-workarounds
 
 ### The problems I encountered during the wizard installation are below
-* AllowOverride error
-This was due to the fact that I mapped port 8080 on my local machine to 80 of the container. When connecting to localhost:8080, Sugar completes a curl request to localhost:8080 to verify the rewrite rules. The local port 8080 is closed from and the call fails, making the application think that the rewrite rules are not working, while they are actually working. To overcome the issue you have to shutdown your local apache and map port 80 on the local machine to port 80 of the container.
-* Timeout error
+* AllowOverride error<br/>
+This was due to the fact that I mapped port 8080 on my local machine to 80 of the container. When connecting to localhost:8080, Sugar completes a curl request to localhost:8080 to verify the rewrite rules. The local port 8080 is closed on the web containers and the call fails, making the application think that the rewrite rules are not working. To overcome the issue you have to shutdown your local apache and map port 80 on the local machine to port 80 of the container.
+* Timeout error<br/>
 If Apache times out during installation due to file system slowness especially on OSX, increase the timeout. It is already set on Dockerfile of the web and on the lb containers to 600 seconds, and that should be plenty.
 
 ## Mentions
