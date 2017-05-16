@@ -36,10 +36,17 @@ This repository will help you deploy a Docker based development full stack for S
 * Elasticsearch files are located in ./data/elasticsearch
 * Redis files are located in ./data/redis
 
+# Disable Zend Opcache
+If you do need to disable/enable Zend Opcache to customise the system without opcache enabled, you can:
+* Edit the two config files on `./images/php65/config/php5/mods-available/opcache.ini` and on `./images/cron/config/php5/mods-available/opcache.ini`
+* Set `opcache.enable=0` and `opcache.enable_cli=0`
+* `docker-compose down`
+* `docker-compose up -d --build`
+To re-enable, repeat by setting `opcache.enable=1` and `opcache.enable_cli=1`
+
 ## Challenges and lessons learned
 ### General challenges
 * Connecting to MySQL from my host to the container, would not work with: `mysql -u root -p -P 3306 -h localhost` but it would instead with: `mysql -u root -p -P 3306 -h 127.0.0.1`. This has something to do with sockets on the host
-* Zend Opcache is not loaded unless specified on the configuration file with `zend_extension=opcache.so`. Once doing so, the Docker log outputs an error where Opcache has been loaded multiple times, but at this point is it actually loaded.
 
 ### Possible OSX specific challenges
 * File system slowness

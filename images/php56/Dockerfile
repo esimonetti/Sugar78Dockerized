@@ -5,9 +5,9 @@ RUN apt-get update
 RUN apt-get -y dist-upgrade
 
 RUN apt-get install -y unzip vim curl php5-curl php5-gd php5-imap libphp-pclzip php5-ldap php5 php5-dev apache2 php5-mcrypt build-essential php5-redis php5-mysql
-RUN a2enmod headers expires deflate rewrite
 
-COPY config/apache2/mods-enabled/deflate.conf /etc/apache2/mods-enabled/deflate.conf
+COPY config/apache2/mods-available/deflate.conf /etc/apache2/mods-available/deflate.conf
+RUN a2enmod headers expires deflate rewrite
 
 RUN adduser sugar --disabled-password --disabled-login --gecos ""
 RUN sed -i "s#APACHE_RUN_USER=.*#APACHE_RUN_USER=sugar#" /etc/apache2/envvars
