@@ -42,6 +42,7 @@ If you do need to disable/enable Zend Opcache to customise the system without op
 * Set `opcache.enable=0` and `opcache.enable_cli=0`
 * `docker-compose down`
 * `docker-compose up -d --build`
+
 To re-enable, repeat by setting `opcache.enable=1` and `opcache.enable_cli=1`
 
 ## Challenges and lessons learned
