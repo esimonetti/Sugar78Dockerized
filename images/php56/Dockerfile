@@ -13,15 +13,13 @@ RUN adduser sugar --disabled-password --disabled-login --gecos ""
 RUN sed -i "s#APACHE_RUN_USER=.*#APACHE_RUN_USER=sugar#" /etc/apache2/envvars
 RUN sed -i "s#APACHE_RUN_GROUP=.*#APACHE_RUN_GROUP=sugar#" /etc/apache2/envvars
 
-RUN chmod 775 /var/www/html
-RUN chown -R sugar:sugar /var/www/html
-
 RUN set -ex \
     && . "/etc/apache2/envvars" \
     && ln -sfT /dev/stderr "$APACHE_LOG_DIR/error.log" \
     && ln -sfT /dev/stdout "$APACHE_LOG_DIR/access.log" \
     && ln -sfT /dev/stdout "$APACHE_LOG_DIR/other_vhosts_access.log"
 
+RUN a2dissite 000-default
 COPY config/apache2/sites-available/sugar.conf /etc/apache2/sites-available/sugar.conf
 RUN a2ensite sugar
 
@@ -57,6 +55,8 @@ RUN mv composer.phar /usr/local/bin/composer
 
 RUN apt-get clean
 RUN apt-get -y autoremove
+
+WORKDIR "/var/www/html/sugar"
 
 EXPOSE 80
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]

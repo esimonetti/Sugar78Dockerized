@@ -23,4 +23,6 @@ RUN php5enmod opcache
 COPY apps/sugarcron /usr/local/bin/sugarcron
 RUN chmod +x /usr/local/bin/sugarcron
 
+USER sugar
+
 CMD ["/usr/local/bin/sugarcron"]

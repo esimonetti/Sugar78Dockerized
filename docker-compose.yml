@@ -21,6 +21,7 @@ services:
             - mysql
             - elasticsearch
             - redis
+            - permissions
         links:
             - mysql
             - elasticsearch
@@ -34,6 +35,7 @@ services:
             - mysql
             - elasticsearch
             - redis
+            - permissions
         links:
             - mysql
             - elasticsearch
@@ -47,6 +49,7 @@ services:
             - mysql
             - elasticsearch
             - redis
+            - permissions
         links:
             - mysql
             - elasticsearch
@@ -72,3 +75,8 @@ services:
         image: redis:latest
         volumes:
             - ./data/redis:/data
+    permissions:
+        container_name: "sugar78-permissions"
+        build: ./images/permissions
+        volumes:
+            - ./data/app:/var/www/html
