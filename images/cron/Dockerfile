@@ -4,7 +4,7 @@ MAINTAINER enrico.simonetti@gmail.com
 RUN apt-get update
 RUN apt-get -y dist-upgrade
 
-RUN apt-get install -y unzip vim curl php5-curl php5-gd php5-imap libphp-pclzip php5-ldap php5 php5-dev php5-mcrypt build-essential php5-redis php5-mysql cron
+RUN apt-get install -y unzip vim curl php5-curl php5-gd php5-imap libphp-pclzip php5-ldap php5 php5-dev php5-mcrypt build-essential php5-redis php5-mysql
 RUN apt-get clean
 RUN apt-get -y autoremove
 
